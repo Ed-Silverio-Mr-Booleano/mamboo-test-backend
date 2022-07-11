@@ -1,4 +1,4 @@
-import { TaskRequestEntity, TaskResponseEntity } from '../../tasks'
+import { TaskRequestEntity, TaskResponseEntity } from '../../entities/task'
 
 export interface TaskRepository {
   createTask(tasks: TaskRequestEntity): void
