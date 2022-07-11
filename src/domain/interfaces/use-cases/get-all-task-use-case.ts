@@ -1,5 +1,5 @@
 import { TaskResponseEntity } from '../../entities/task'
 
-export interface GetAllTaskUseCase {
+export interface GetAllTasksUseCase {
   execute(): Promise<TaskResponseEntity[]>
 }
