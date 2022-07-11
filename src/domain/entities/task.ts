@@ -1,15 +1,15 @@
 
 export interface TaskRequestEntity {
   name: string
-  startDate: Date
-  finshDate: Date
+  startDate: string
+  finishDate: string
   status: string
 }
 
 export interface TaskResponseEntity {
   id: string
   name: string
-  startDate: Date
-  finshDate: Date
+  startDate: string
+  finishDate: string
   status: string
 }
