@@ -5,5 +5,5 @@ export interface TaskRepository {
   deleteTask(id: String): void
   updateTask(id: String, data: TaskRequestEntity): void
   getTasks(): Promise<TaskResponseEntity[]>
-  getTasks(id: String): Promise<TaskResponseEntity | null>
+  getTask(id: String): Promise<TaskResponseEntity | null>
 }
