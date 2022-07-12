@@ -16,7 +16,7 @@ async function getMongoDS (): Promise<MongoDBTaskDataSource> {
     find: (query) => db.collection('tasks').find(query).toArray(),
     insertOne: (doc) => db.collection('tasks').insertOne(doc),
     deleteOne: (id: String) => db.collection('tasks').deleteOne({ _id: id }),
-    updateOne: (id: String, data: object) => db.collection('contacts').updateOne({ _id: id }, data)
+    updateOne: (id: String, data: object) => db.collection('taks').updateOne({ _id: id }, data)
   }
 
   return new MongoDBTaskDataSource(taskDatabase)
