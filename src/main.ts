@@ -2,6 +2,7 @@ import server from './server'
 import TasksRouter from './presentation/routers/task-router'
 import { GetAllTasks } from './domain/use-cases/task/get-all-task'
 import { TaskRepositoryImpl } from './domain/repositories/task-repository'
+import { DeleteTask } from './domain/use-cases/task/delete-task'
 import { CreateTask } from './domain/use-cases/task/create-task'
 import { MongoClient } from 'mongodb'
 import { NoSQLDatabaseWrapper } from './data/interfaces/data-source/nosql-database-wrapper'
@@ -31,7 +32,8 @@ async function getMongoDS (): Promise<MongoDBTaskDataSource> {
 
   const taskMiddleware = TasksRouter(
     new GetAllTasks(new TaskRepositoryImpl(dataSource)),
-    new CreateTask(new TaskRepositoryImpl(dataSource))
+    new CreateTask(new TaskRepositoryImpl(dataSource)),
+    new DeleteTask(new TaskRepositoryImpl(dataSource))
   )
   server.use('/tasks', taskMiddleware)
   server.listen(PORT, () => console.log(`Running on http://localhost:${PORT}`))
