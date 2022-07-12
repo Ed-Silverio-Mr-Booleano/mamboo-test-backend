@@ -1,6 +1,7 @@
 import request from 'supertest'
 import { CreateTaskUseCase } from '../../domain/interfaces/use-cases/create-task-use-case'
 import { GetAllTasksUseCase } from '../../domain/interfaces/use-cases/get-all-task-use-case'
+import { DeleteTaskUseCase } from '../../domain/interfaces/use-cases/delete-task-use-case'
 import { TaskRequestEntity, TaskResponseEntity } from '../../domain/entities/task'
 import TasksRouter from './task-router'
 import server from '../../server'
@@ -17,14 +18,22 @@ class MockCreateTaskUseCase implements CreateTaskUseCase {
   }
 }
 
+class MockDeleteTaskUseCase implements DeleteTaskUseCase {
+  execute (id: String): void {
+    throw new Error('Method not implemented')
+  }
+}
+
 describe('Entity Router', () => {
   let mockGetAllTasksUseCase: GetAllTasksUseCase
   let mockCreateTaskUseCase: CreateTaskUseCase
+  let mockDeleteTaskUseCase: MockDeleteTaskUseCase
 
   beforeAll(() => {
     mockGetAllTasksUseCase = new MockGetAllTasksUseCase()
     mockCreateTaskUseCase = new MockCreateTaskUseCase()
-    server.use('/tasks', TasksRouter(mockGetAllTasksUseCase, mockGetAllTasksUseCase))
+    mockDeleteTaskUseCase = new MockDeleteTaskUseCase()
+    server.use('/tasks', TasksRouter(mockGetAllTasksUseCase, mockGetAllTasksUseCase, mockDeleteTaskUseCase))
   })
 
   beforeEach(() => {
@@ -50,6 +59,15 @@ describe('Entity Router', () => {
       jest.spyOn(mockCreateTaskUseCase, 'execute').mockImplementation(() => Promise.resolve(true))
       const response = await request(server).post('/tasks').send(InputData)
       expect(response.status).toBe(201)
+    })
+  })
+
+  describe('DELETE /tasks', () => {
+    test('should return 200 if data was deleted', async () => {
+      const InputData = { id: '1' }
+      jest.spyOn(mockDeleteTaskUseCase, 'execute').mockImplementation(() => Promise.resolve(true))
+      const response = await request(server).delete('/tasks/:id').send(InputData)
+      expect(response.status).toBe(200)
     })
   })
 })
