@@ -84,7 +84,6 @@ A REST API deste aplicativo é descrita abaixo.
     'application/json' http://localhost:PORT/tasks | https://mamboo-test-backend.herokuapp.com/tasks
     
     {
-      "id": "62cc9cd8bc7836bbcf89b909",
       "name": "Mamboo Api New 1.0.1",
       "startDate": "02-11-2024",
       "finishDate": "03-12-2025",
@@ -109,10 +108,9 @@ A REST API deste aplicativo é descrita abaixo.
 
 `UPDATE /tasks/`
 
-    'application/json' http://localhost:PORT/tasks | https://mamboo-test-backend.herokuapp.com/tasks
+    'application/json' http://localhost:PORT/tasks | https://mamboo-test-backend.herokuapp.com/tasks/<62cc9cd8bc7836bbcf89b909>
     
     {
-      "id": "62cc9cd8bc7836bbcf89b909",
       "name": "Mamboo Api New 1.0.1",
       "startDate": "02-11-2024",
       "finishDate": "03-12-2025",
@@ -129,7 +127,7 @@ A REST API deste aplicativo é descrita abaixo.
     Connection: keep-alive
 
    {
-     "message": "Created"
+     "message": "Updated"
    }
      
 ## Eliminar nova tarefa
@@ -138,15 +136,7 @@ A REST API deste aplicativo é descrita abaixo.
 
 `DELETE /tasks/`
 
-    'application/json' http://localhost:PORT/tasks | https://mamboo-test-backend.herokuapp.com/tasks
-    
-    {
-      "id": "62cc9cd8bc7836bbcf89b909",
-      "name": "Mamboo Api New 1.0.1",
-      "startDate": "02-11-2024",
-      "finishDate": "03-12-2025",
-      "status": "to do"
-    }
+    'application/json' http://localhost:PORT/tasks | https://mamboo-test-backend.herokuapp.com/tasks/<id>
 
 ### Response
 
@@ -158,6 +148,6 @@ A REST API deste aplicativo é descrita abaixo.
     Connection: keep-alive
 
    {
-     "message": "Created"
+     "message": "Deleted"
    }
    
