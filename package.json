@@ -2,7 +2,7 @@
   "name": "mamboo-test-backend",
   "version": "1.0.0",
   "description": "",
-  "main": "index.js",
+  "main": "server.js",
   "scripts": {
     "test": "jest --passWithNoTests --watch",
     "test:staged": "jest --passWithNoTests",

@@ -1,3 +1,4 @@
+import "reflect-metadata";
 import server from './server'
 import TasksRouter from './presentation/routers/task-router'
 import { GetAllTasks } from './domain/use-cases/task/get-all-task'
@@ -10,7 +11,7 @@ import dotenv from 'dotenv'
 
 dotenv.config()
 
-const PORT = process.env.PORT || 3333
+const PORT = process.env.PORT || 3333;
 
 async function getMongoDS (): Promise<MongoDBTaskDataSource> {
   const client: MongoClient = new MongoClient(process.env.URI)
