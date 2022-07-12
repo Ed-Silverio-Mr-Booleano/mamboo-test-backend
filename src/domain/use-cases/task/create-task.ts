@@ -3,12 +3,12 @@ import { TaskRepository } from '../../interfaces/repositories/task-repository'
 import { CreateTaskUseCase } from '../../interfaces/use-cases/create-task-use-case'
 
 export class CreateTask implements CreateTaskUseCase {
-  TaskRepository: TaskRepository
+  taskRepository: TaskRepository
   constructor (TaskRepository: TaskRepository) {
-    this.TaskRepository = TaskRepository
+    this.taskRepository = TaskRepository
   }
 
   async execute (task: TaskRequestEntity): Promise<void> {
-    await this.TaskRepository.createTask(task)
+    await this.taskRepository.createTask(task)
   }
 }
